@@ -42,11 +42,13 @@ public class BankAccount {
      * @return The amount deposited into the account. If no money could be deposited due to an error, return zero.
      */
     public double Deposit(double amount) {
-        if(amount<=0)
+        if (amount <= 0) {
             System.out.println("Sorry, the amount deposited must be greater than 0.");
-
+            amount = 0;
+        }
+            return amount;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+
     }
 
     /**
@@ -63,9 +65,16 @@ public class BankAccount {
      * returns zero.
      */
     public double Withdraw(double amount) {
-
+        if(amount<0) {
+            System.out.println("Sorry, the amount withdrawn must be greater than 0.");
+            amount = 0;
+        }
+        else if(amount>accountBalance) {
+            System.out.println("Sorry, you cannot withdraw more than the account balance.");
+            amount = 0;
+        }
+            return amount;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -82,9 +91,16 @@ public class BankAccount {
      * @return The amount of interest computed. If there is an error, returns zero.
      */
     public double AddInterest(int numYears, double interestRate) {
-
+        if (numYears <= 0) {
+            System.out.println("Sorry, the number of years must be an integer greater than 0.");
+            amount = 0;
+        }
+        else if (interestRate <= 0) {
+            System.out.println("Sorry, the interest rate must be greater than 0.");
+            amount = 0;
+        }
+            return accountBalance * numYears * interestRate;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
