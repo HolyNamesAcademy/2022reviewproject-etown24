@@ -112,9 +112,7 @@ public class BankAccount {
      * @return String
      */
     public String toString() {
-
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        return("Name: " + name+ "/nAccount Balance: " + accountBalance);
     }
 
     /**
