@@ -46,7 +46,7 @@ public class BankAccount {
             System.out.println("Sorry, the amount deposited must be greater than 0.");
             amount = 0;
         }
-            return amount;
+        return amount + accountBalance;
         // write your code above and remove the line below
 
     }
@@ -65,15 +65,14 @@ public class BankAccount {
      * returns zero.
      */
     public double Withdraw(double amount) {
-        if(amount<0) {
+        if (amount < 0) {
             System.out.println("Sorry, the amount withdrawn must be greater than 0.");
             amount = 0;
-        }
-        else if(amount>accountBalance) {
+        } else if (amount > accountBalance) {
             System.out.println("Sorry, you cannot withdraw more than the account balance.");
             amount = 0;
         }
-            return amount;
+        return amount;
         // write your code above and remove the line below
     }
 
@@ -94,12 +93,11 @@ public class BankAccount {
         if (numYears <= 0) {
             System.out.println("Sorry, the number of years must be an integer greater than 0.");
             accountBalance = 0;
-        }
-        else if (interestRate <= 0) {
+        } else if (interestRate <= 0) {
             System.out.println("Sorry, the interest rate must be greater than 0.");
             accountBalance = 0;
         }
-            return accountBalance * numYears * interestRate;
+        return accountBalance * numYears * interestRate;
         // write your code above and remove the line below
     }
 
@@ -112,7 +110,7 @@ public class BankAccount {
      * @return String
      */
     public String toString() {
-        return("Name: " + name+ "/nAccount Balance: " + accountBalance);
+        return ("Name: " + name + "/nAccount Balance: " + accountBalance);
     }
 
     /**
