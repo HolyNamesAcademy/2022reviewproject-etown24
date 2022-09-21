@@ -93,11 +93,11 @@ public class BankAccount {
     public double AddInterest(int numYears, double interestRate) {
         if (numYears <= 0) {
             System.out.println("Sorry, the number of years must be an integer greater than 0.");
-            amount = 0;
+            accountBalance = 0;
         }
         else if (interestRate <= 0) {
             System.out.println("Sorry, the interest rate must be greater than 0.");
-            amount = 0;
+            accountBalance = 0;
         }
             return accountBalance * numYears * interestRate;
         // write your code above and remove the line below
