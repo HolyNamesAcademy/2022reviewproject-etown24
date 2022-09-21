@@ -46,7 +46,8 @@ public class BankAccount {
             System.out.println("Sorry, the amount deposited must be greater than 0.");
             amount = 0;
         }
-        return (amount + accountBalance);
+        amount += accountBalance;
+        return amount;
         // write your code above and remove the line below
 
     }
