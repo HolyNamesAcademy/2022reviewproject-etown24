@@ -119,9 +119,11 @@ public class ArrayListPractice {
      * @return The first student whose favorite color is the one specified.
      */
     public static Student GetFirstStudentWithFavoriteColor(ArrayList<Student> students, String color) {
-        for(int i = )
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetFavoriteColor().equals(color))
+                 return students.get(i);
+        }
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -131,10 +133,12 @@ public class ArrayListPractice {
      * @param name     The name of the student to look for.
      * @return The favorite color of the specified student.
      */
-    public static String GetFavoriteColorOfStudent(ArrayList<Student> students, String name) {
-
+    public static String GetFavoriteColorOfStudent(ArrayList<Student> students, String name){
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).GetName().equals(name))
+                return students.get(i).GetFavoriteColor();
+        }
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -144,9 +148,15 @@ public class ArrayListPractice {
      * @return The tallest student in the list.
      */
     public static Student GetTallestStudent(ArrayList<Student> students) {
-
+        String tallest = "";
+        for (int i = 0; i < students.size()-1; i++){
+            if(students.get(i).GetHeight()> students.get(i+1).GetHeight())
+                return students.get(i);
+            else
+                return students.get(i+1);
+        }
+        return students.get(i);
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
