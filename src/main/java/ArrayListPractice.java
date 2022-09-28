@@ -123,6 +123,7 @@ public class ArrayListPractice {
             if (students.get(i).GetFavoriteColor().equals(color))
                  return students.get(i);
         }
+        return null;
         // write your code above and remove the line below
     }
 
@@ -138,6 +139,7 @@ public class ArrayListPractice {
             if (students.get(i).GetName().equals(name))
                 return students.get(i).GetFavoriteColor();
         }
+        return null;
         // write your code above and remove the line below
     }
 
@@ -155,7 +157,7 @@ public class ArrayListPractice {
             else
                 return students.get(i+1);
         }
-        return students.get(i);
+        return null;
         // write your code above and remove the line below
     }
 
@@ -172,7 +174,9 @@ public class ArrayListPractice {
      * @return List of Student objects.
      */
     public static ArrayList<Student> CreateStudentArray(ArrayList<String> names, ArrayList<Integer> heights, ArrayList<Integer> gradeLevels, ArrayList<String> favoriteColors, ArrayList<BankAccount> bankAccounts) {
-
+        ArrayList<Student> objects = new ArrayList<Student>();
+        for (int i = 0; i < objects.size(); i++)
+            objects.add(names.add(i), heights.add(i), gradeLevels.add(i), favoriteColors.add(i), bankAccounts.add(i));
         // write your code above and remove the line below
         throw new UnsupportedOperationException();
     }
