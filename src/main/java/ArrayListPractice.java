@@ -175,10 +175,12 @@ public class ArrayListPractice {
      */
     public static ArrayList<Student> CreateStudentArray(ArrayList<String> names, ArrayList<Integer> heights, ArrayList<Integer> gradeLevels, ArrayList<String> favoriteColors, ArrayList<BankAccount> bankAccounts) {
         ArrayList<Student> objects = new ArrayList<Student>();
-        for (int i = 0; i < objects.size(); i++)
-            objects.add(names.add(i), heights.add(i), gradeLevels.add(i), favoriteColors.add(i), bankAccounts.add(i));
+        for (int i = 0; i < objects.size(); i++) {
+            Student newStudent = new Student(names.get(i), heights.get(i), gradeLevels.get(i), favoriteColors.get(i), bankAccounts.get(i));
+            objects.add(newStudent);
+        }
+        return objects;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -194,7 +196,10 @@ public class ArrayListPractice {
      * @return A string that lists the team number followed by each team.
      */
     public static String GetTeamsString(ArrayList<ArrayList<Student>> teams) {
+        String t = "";
+        for(int i = 0; i< teams.size(); i++){
 
+        }
         // write your code above and remove the line below
         throw new UnsupportedOperationException();
     }
@@ -207,7 +212,10 @@ public class ArrayListPractice {
      * @param newFavoriteColor The new favorite color of the student.
      */
     public static void UpdateFavoriteColor(ArrayList<Student> students, String name, String newFavoriteColor) {
-
+        for(int i = 0; i<students.size(); i++){
+            if(students.get(i).equals(name));
+            student(i).getFaxoriteColor = newFavoriteColor;
+        }
         // write your code above and remove the line below
         throw new UnsupportedOperationException();
     }
