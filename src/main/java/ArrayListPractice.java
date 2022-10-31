@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import static java.util.Collections.swap;
+
 public class ArrayListPractice {
     /**
      * Get the first element in the ArrayList.
@@ -208,16 +210,15 @@ public class ArrayListPractice {
      * Finds the student with the given name, and updates their favorite color to the given color.
      *
      * @param students         The list of students to search over.
-     * @param name             The name of the student whose favorite color should be updated.
+     * @param name  j n           The name of the student whose favorite color should be updated.
      * @param newFavoriteColor The new favorite color of the student.
      */
     public static void UpdateFavoriteColor(ArrayList<Student> students, String name, String newFavoriteColor) {
-        for(int i = 0; i<students.size(); i++){
-            if(students.get(i).equals(name));
-            student(i).getFaxoriteColor = newFavoriteColor;
+        for(int i = 0; i <students.size(); i++){
+            if(students.get(i).GetName().equals(name))
+                students.get(i).SetFavoriteColor(newFavoriteColor);
         }
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        // write your code above  and remove the line below
     }
 
     /**
@@ -228,9 +229,13 @@ public class ArrayListPractice {
      * @return An ArrayList containing all the students in gradeLevel.
      */
     public static ArrayList<Student> GetStudentsInGradeLevel(ArrayList<Student> students, int gradeLevel) {
-
+        ArrayList<Student> al = new ArrayList<>();
+        for (int i = 0; i<students.size(); i++){
+            if(students.get(i).GetGradeLevel() == gradeLevel)
+                al.add(students.get(i));
+        }
+        return al;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -244,9 +249,28 @@ public class ArrayListPractice {
      * had sufficient funds in their account. Otherwise, false.
      */
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
-
+        int fromSt = -1;
+        int toSt = -1;
+        if(amount <= 0){
+            return false;
+        }
+        for (int i = 0; i<students.size(); i++){
+            if(students.get(i).GetName().equals(fromStudentName)) {
+                if (students.get(i).GetBankAccount().GetBalance() < amount || students.get(i).GetBankAccount().GetBalance() == 0){
+                    return false;
+                }
+                fromSt = i;
+            } else if (students.get(i).GetName().equals(toStudentName)){
+                toSt = i;
+            }
+        }
+        if (fromSt > -1 && toSt >-1){
+            students.get(fromSt).GetBankAccount().Withdraw(amount);
+            students.get(toSt).GetBankAccount().Deposit(amount);
+            return true;
+        }
+        return false;
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -256,10 +280,16 @@ public class ArrayListPractice {
      * @param students The list of students to advance to the next grade.
      */
     public static void UpdateGradeLevels(ArrayList<Student> students) {
-
+        for (int i = 0; i <students.size(); i++) {
+            if(students.get(i).GetGradeLevel()==12){
+                students.remove(i);
+                i--;
+            }
+            else{
+            students.get(i).SetGradeLevel(students.get(i).GetGradeLevel()+1);
+        }
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
-    }
+    }}
 
     /**
      * EXTRA CREDIT:
@@ -270,8 +300,12 @@ public class ArrayListPractice {
      * @param students The list of students to sort.
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
-
+        for (int i = 0; i<students.size(); i++){
+            int minIndex = 9;
+            if(minIndex != i)
+                swap(students, i , minIndex);
+        }
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
+
 }

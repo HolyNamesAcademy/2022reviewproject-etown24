@@ -31,6 +31,14 @@ public class ShapeMaker {
      */
     public static String PrintRectangle(int length, int height)
     {
+        for(int i = 0; i< length; i++) {
+            if (i > 0 && i <= length)
+                System.out.print("* ");
+        }
+        for (int h = 0; h < height; h++) {
+            if (h > 0 && h <= height)
+                System.out.print("* ");
+            }
         // write your code here
         return "";
     }
@@ -49,6 +57,10 @@ public class ShapeMaker {
      */
     public static String PrintRightTriangle(int height)
     {
+        for(int h = 0; h<height; h++){
+            System.out.print("* ");
+        }
+        System.out.print("\n");
         // write your code here
         return "";
     }
@@ -67,6 +79,10 @@ public class ShapeMaker {
      */
     public static String PrintInvertedRightTriangle(int height)
     {
+        for(int h = height; h<1; h--){
+            System.out.print("* ");
+        }
+        System.out.print("\n");
         // write your code here
         return "";
     }
@@ -86,6 +102,9 @@ public class ShapeMaker {
 
     public static String PrintBackwardsRightTriangle(int height)
     {
+        for(int h = 0; h<height; h++) {
+            System.out.print("* ");
+        }
         // write your code here
         return "";
     }
@@ -104,6 +123,9 @@ public class ShapeMaker {
      */
     public static String PrintEquilateralTriangle(int height)
     {
+        for(int h = 0; h<height; h++) {
+            System.out.print("* ");
+        }
         // write your code here
         return "";
     }

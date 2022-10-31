@@ -69,8 +69,7 @@ public class BankAccountManager {
      */
     public static void PrintAccountInfo(BankAccount account)
     {
-
+        System.out.print("Name: "+ account.GetName() + "\nAccount Balance: "+ account.GetBalance());
         // write your code above and remove the line below
-        throw new UnsupportedOperationException();
     }
 }
