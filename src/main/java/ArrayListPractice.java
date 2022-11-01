@@ -44,8 +44,7 @@ public class ArrayListPractice {
      */
     public static int GetSum(ArrayList<Integer> numbers) {
         int total = 0;
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            numbers.get(i);
+        for (int i = 0; i < numbers.size(); i++) {
             total += numbers.get(i);
         }
         return total;
@@ -78,11 +77,11 @@ public class ArrayListPractice {
      */
     public static int GetMax(ArrayList<Integer> numbers) {
         int max = 0;
-        for (int i = 0; i < numbers.size() - 1; i++){
-            if(numbers.get(i)>numbers.get(i+1))
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            if (numbers.get(i) > numbers.get(i + 1))
                 max = numbers.get(i);
             else
-                max = numbers.get(i+1);
+                max = numbers.get(i + 1);
         }
         return max;
         // write your code above and remove the line below
@@ -104,15 +103,16 @@ public class ArrayListPractice {
      */
     public static ArrayList<Integer> CreateNumberArray(int first, int last) {
         ArrayList<Integer> nums = new ArrayList<>();
-        if(first == last)
+        if (first == last)
             return nums;
         if (first > last)
             return nums;
-        for(int i = first;i < last;i++)
+        for (int i = first; i < last; i++)
             nums.add(i);
         return nums;
         // write your code above and remove the line below
     }
+
     /**
      * Finds the first student whose favorite color is the one specified.
      *
@@ -121,9 +121,9 @@ public class ArrayListPractice {
      * @return The first student whose favorite color is the one specified.
      */
     public static Student GetFirstStudentWithFavoriteColor(ArrayList<Student> students, String color) {
-        for (int i = 0; i < students.size(); i++){
+        for (int i = 0; i < students.size(); i++) {
             if (students.get(i).GetFavoriteColor().equals(color))
-                 return students.get(i);
+                return students.get(i);
         }
         return null;
         // write your code above and remove the line below
@@ -136,8 +136,8 @@ public class ArrayListPractice {
      * @param name     The name of the student to look for.
      * @return The favorite color of the specified student.
      */
-    public static String GetFavoriteColorOfStudent(ArrayList<Student> students, String name){
-        for (int i = 0; i < students.size(); i++){
+    public static String GetFavoriteColorOfStudent(ArrayList<Student> students, String name) {
+        for (int i = 0; i < students.size(); i++) {
             if (students.get(i).GetName().equals(name))
                 return students.get(i).GetFavoriteColor();
         }
@@ -152,14 +152,14 @@ public class ArrayListPractice {
      * @return The tallest student in the list.
      */
     public static Student GetTallestStudent(ArrayList<Student> students) {
-        String tallest = "";
-        for (int i = 0; i < students.size()-1; i++){
-            if(students.get(i).GetHeight()> students.get(i+1).GetHeight())
-                return students.get(i);
-            else
-                return students.get(i+1);
+        Student tallestStudent = students.get(0);
+        for(int i = 0; i < students.size(); i++){
+            if(students.get(i).GetHeight() > tallestStudent.GetHeight()){
+                tallestStudent = students.get(i);
+            }
+            return tallestStudent;
         }
-        return null;
+        return tallestStudent;
         // write your code above and remove the line below
     }
 
@@ -177,7 +177,7 @@ public class ArrayListPractice {
      */
     public static ArrayList<Student> CreateStudentArray(ArrayList<String> names, ArrayList<Integer> heights, ArrayList<Integer> gradeLevels, ArrayList<String> favoriteColors, ArrayList<BankAccount> bankAccounts) {
         ArrayList<Student> objects = new ArrayList<Student>();
-        for (int i = 0; i < objects.size(); i++) {
+        for (int i = 0; i < names.size(); i++) {
             Student newStudent = new Student(names.get(i), heights.get(i), gradeLevels.get(i), favoriteColors.get(i), bankAccounts.get(i));
             objects.add(newStudent);
         }
@@ -198,24 +198,31 @@ public class ArrayListPractice {
      * @return A string that lists the team number followed by each team.
      */
     public static String GetTeamsString(ArrayList<ArrayList<Student>> teams) {
-        String t = "";
-        for(int i = 0; i< teams.size(); i++){
-
+        String result = "";
+        for (int i = 0; i < teams.size(); i++) {
+            result += "Team " + (i + 1) + ": ";
+            for (int j = 0; j < teams.get(i).size(); j++) {
+                if (j == 0) {
+                    result += teams.get(i).get(j).GetName();
+                } else {
+                    result += ", " + teams.get(i).get(j).GetName();
+                }
+            }
+            result += "\n";
         }
-        // write your code above and remove the line below
-        throw new UnsupportedOperationException();
+        return result;
     }
 
     /**
      * Finds the student with the given name, and updates their favorite color to the given color.
      *
      * @param students         The list of students to search over.
-     * @param name  j n           The name of the student whose favorite color should be updated.
+     * @param name             j n           The name of the student whose favorite color should be updated.
      * @param newFavoriteColor The new favorite color of the student.
      */
     public static void UpdateFavoriteColor(ArrayList<Student> students, String name, String newFavoriteColor) {
-        for(int i = 0; i <students.size(); i++){
-            if(students.get(i).GetName().equals(name))
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).GetName().equals(name))
                 students.get(i).SetFavoriteColor(newFavoriteColor);
         }
         // write your code above  and remove the line below
@@ -230,8 +237,8 @@ public class ArrayListPractice {
      */
     public static ArrayList<Student> GetStudentsInGradeLevel(ArrayList<Student> students, int gradeLevel) {
         ArrayList<Student> al = new ArrayList<>();
-        for (int i = 0; i<students.size(); i++){
-            if(students.get(i).GetGradeLevel() == gradeLevel)
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).GetGradeLevel() == gradeLevel)
                 al.add(students.get(i));
         }
         return al;
@@ -251,20 +258,20 @@ public class ArrayListPractice {
     public static boolean TransferMoney(ArrayList<Student> students, String fromStudentName, String toStudentName, double amount) {
         int fromSt = -1;
         int toSt = -1;
-        if(amount <= 0){
+        if (amount <= 0) {
             return false;
         }
-        for (int i = 0; i<students.size(); i++){
-            if(students.get(i).GetName().equals(fromStudentName)) {
-                if (students.get(i).GetBankAccount().GetBalance() < amount || students.get(i).GetBankAccount().GetBalance() == 0){
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).GetName().equals(fromStudentName)) {
+                if (students.get(i).GetBankAccount().GetBalance() < amount || students.get(i).GetBankAccount().GetBalance() == 0) {
                     return false;
                 }
                 fromSt = i;
-            } else if (students.get(i).GetName().equals(toStudentName)){
+            } else if (students.get(i).GetName().equals(toStudentName)) {
                 toSt = i;
             }
         }
-        if (fromSt > -1 && toSt >-1){
+        if (fromSt > -1 && toSt > -1) {
             students.get(fromSt).GetBankAccount().Withdraw(amount);
             students.get(toSt).GetBankAccount().Deposit(amount);
             return true;
@@ -280,16 +287,16 @@ public class ArrayListPractice {
      * @param students The list of students to advance to the next grade.
      */
     public static void UpdateGradeLevels(ArrayList<Student> students) {
-        for (int i = 0; i <students.size(); i++) {
-            if(students.get(i).GetGradeLevel()==12){
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).GetGradeLevel() == 12) {
                 students.remove(i);
                 i--;
+            } else {
+                students.get(i).SetGradeLevel(students.get(i).GetGradeLevel() + 1);
             }
-            else{
-            students.get(i).SetGradeLevel(students.get(i).GetGradeLevel()+1);
+            // write your code above and remove the line below
         }
-        // write your code above and remove the line below
-    }}
+    }
 
     /**
      * EXTRA CREDIT:
@@ -300,10 +307,10 @@ public class ArrayListPractice {
      * @param students The list of students to sort.
      */
     public static void SortByGradeAndName(ArrayList<Student> students) {
-        for (int i = 0; i<students.size(); i++){
+        for (int i = 0; i < students.size(); i++) {
             int minIndex = 9;
-            if(minIndex != i)
-                swap(students, i , minIndex);
+            if (minIndex != i)
+                swap(students, i, minIndex);
         }
         // write your code above and remove the line below
     }

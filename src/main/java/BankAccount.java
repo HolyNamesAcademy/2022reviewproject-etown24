@@ -73,6 +73,7 @@ public class BankAccount {
             System.out.println("Sorry, you cannot withdraw more than the account balance.");
             amount = 0;
         }
+        accountBalance = accountBalance - amount;
         return amount;
         // write your code above and remove the line below
     }
@@ -91,15 +92,19 @@ public class BankAccount {
      * @return The amount of interest computed. If there is an error, returns zero.
      */
     public double AddInterest(int numYears, double interestRate) {
-        if (numYears <= 0) {
+
+        if(numYears <= 0){
             System.out.println("Sorry, the number of years must be an integer greater than 0.");
-            accountBalance = 0;
         } else if (interestRate <= 0) {
             System.out.println("Sorry, the interest rate must be greater than 0.");
-            accountBalance = 0;
         }
-        return accountBalance * numYears * interestRate;
-        // write your code above and remove the line below
+        else{
+            double amountAdded = accountBalance * numYears * interestRate;
+            accountBalance += amountAdded;
+            return amountAdded;
+        }
+        return 0.0;
+            // write your code above and remove the line below
     }
 
     /**
